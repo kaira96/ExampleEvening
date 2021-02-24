@@ -1,0 +1,50 @@
+CRUD
+ORM
+CREAD
+from news.models import News
+News(title='Новость 1', content='Сегодня спать нельзя')
+news1 = _
+news1.title
+news1.id
+news1.save()
+from django.db import connection
+connection.queries
+news1.pk
+news2 = News(title='Новость 2', content='Все еще спать не надо')
+news4 = News()
+news4.title = 'News 4'
+news4.content = 'Не спаааааааать'
+news4.save()
+
+
+READ
+News.objects.all()
+for item in news:
+...     print(item.title, item.is_published)
+... 
+Новость 1 True
+Новость 2 True
+News 3 True
+News 4 True
+Новость 5 True
+for item in news:
+...     print(item.title, item.content)
+... 
+Новость 1 Сегодня спать нельзя
+Новость 2 Все еще спать не надо
+News 3 Don't sleep
+News 4 Не спаааааааать
+Новость 5 Вау никто не спит
+News.objects.filter(title='Новость 2')
+news4 = _
+
+UPDATE
+news4.title = 'Hololo'
+news4.save()
+News.objects.all()
+
+
+DELETE
+news6 = News.objects.get(pk=6)
+news6.delete()
+
