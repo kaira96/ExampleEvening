@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+{#Список новостей#}
+<h1> {{ title }} </h1>
+{#Цикл новостей#}
+{% for item in news %}
+    <div>
+{#        Заголовок Новости#}
+        <p>{{ item.title }}</p>
+{#        Контент новости#}
+        <p>{{ item.content }}</p>
+{#        Дата публикации новости#}
+        <p>{{ item.created_at|date:"Y-m-d H:i:s" }}</p>
+    </div>
+    <hr>
+{#Закрытие цикла for#}
+{%  endfor %}
+</body>
+</html>

@@ -1,9 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-def index(request):
-    print(dir(request))
-    return HttpResponse('Hello World')
+from news.models import News
 
-def test(request):
-    return HttpResponse("<h1>Тестовая страница</h1>")
+
+def index(request):
+    news = News.objects.all()
+    context = {
+        'news': news,
+        'title': 'Список новостей'
+    }
+    return render(request, template_name='news/index.html', context=context)
+
