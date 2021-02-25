@@ -47,4 +47,66 @@ News.objects.all()
 DELETE
 news6 = News.objects.get(pk=6)
 news6.delete()
+#############################################################################################
+
+
+Templates and AdminPanel
+python manage.py createsuperuser
+python manage.py makemigrations
+python manage.py migrate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
