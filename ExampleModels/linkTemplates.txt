@@ -1,0 +1,4 @@
+https://getbootstrap.com - Здесь шаблоны HTML CSS JS
+https://www.lipsum.com/ - Здесь текста для контента
+pip freeze > requirements.txt - Создание файла с зависимостями
+pip install -r requirements.txt - Установка из файла с зависимостями 

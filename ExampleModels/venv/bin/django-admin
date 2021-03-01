@@ -1,4 +1,4 @@
-#!/home/tenthent/PycharmProjects/ExampleModels/venv/bin/python
+#!/home/tenthent/ExampleEvening/ExampleModels/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
