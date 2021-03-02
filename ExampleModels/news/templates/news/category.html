@@ -9,12 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <title>{{ title }}</title>
+    <title>{{ category.title }}</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <!--                Указали новый параметр {% url 'home' %}-->
         <a class="navbar-brand" href="{% url 'home' %}">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +22,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--                                                Указали новый параметр {% url 'home' %}-->
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Главная</a></li>
-                <!--                                                Указали новый параметр {% url 'home' %}-->
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Добавить новость</a></li>
             </ul>
         </div>
@@ -33,16 +30,12 @@
 </nav>
 
 <div class="container mb-3">
-    <h1>{{ title }}</h1>
-    <!--    {{ news.count }}   &lt;!&ndash;Сколько всего постов&ndash;&gt;-->
     <div class="row">
 
         <div class="col-md-3">
             <div class="list-group">
                 {% for item in categories %}
-                    <!--          Указали новый параметр {% url 'category' item.pk %}-->
-                    <a href="{% url 'category' item.pk %}"
-                       class="list-group-item list-group-item-action">{{ item.title }}</a>
+                <a href="{% url 'category' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
                 {% endfor %}
             </div>
         </div>
@@ -50,31 +43,31 @@
         <!--        Меняем количество колонок-->
         <div class="col-md-9">
             {% for item in news %}
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Категория: <a href="{% url 'category' item.category.pk %}">{{ item.category }}</a>
-                    </div>
-                    <div class="card-body">
-                        <!--                    Начало-->
-                        <div class="media">
-                            <!--                        Добавляем фото в страницу-->
-                            {% if item.photo %}
-                                <img src="{{ item.photo.url }}" alt="" width="350" class="mr-3">
-                            {% else %}
-                                <img src="https://picsum.photos/id/237/200/300" alt="" class="mr-3">
-                            {% endif %}
-                        </div>
-                        <div class="media-body">
-                            <h5 class="card-title">{{ item.title }}</h5>
-                            <p class="card-text">{{ item.content|safe|linebreaks|truncatewords:50 }}</p>
-                            <a href="#" class="btn btn-primary">Read more...</a>
-                        </div>
-                        <!--Конец-->
-                    </div>
-                    <div class="card-footer text-muted">
-                        {{ item.created_at|date:"Y-m-d H:i:s" }}
-                    </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    Категория: {{ item.category }}
                 </div>
+                <div class="card-body">
+                    <!--                    Начало-->
+                    <div class="media">
+                        <!--                        Добавляем фото в страницу-->
+                        {% if item.photo %}
+                        <img src="{{ item.photo.url }}" alt="" width="350" class="mr-3">
+                        {% else %}
+                        <img src="https://picsum.photos/id/237/200/300" alt="" class="mr-3">
+                        {% endif %}
+                    </div>
+                    <div class="media-body">
+                        <h5 class="card-title">{{item.title}}</h5>
+                        <p class="card-text">{{item.content|safe|linebreaks|truncatewords:50}}</p>
+                        <a href="#" class="btn btn-primary">Read more...</a>
+                    </div>
+                    <!--Конец-->
+                </div>
+                <div class="card-footer text-muted">
+                    {{item.created_at|date:"Y-m-d H:i:s"}}
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
