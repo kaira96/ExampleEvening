@@ -54,8 +54,9 @@
                     <div class="card-header">
                         Категория: <a href="{% url 'category' item.category.pk %}">{{ item.category }}</a>
                     </div>
+
                     <div class="card-body">
-                        <!--                    Начало-->
+                              <!--                    Начало-->
                         <div class="media">
                             <!--                        Добавляем фото в страницу-->
                             {% if item.photo %}
