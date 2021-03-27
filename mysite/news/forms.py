@@ -2,8 +2,26 @@ from django import forms
 from django.core.exceptions import ValidationError
 import re
 from .models import News
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(label='Тема', widget=forms.TextInput(attrs={
+        'class' : 'form-control'}))
+    content = forms.CharField(label='Текст', widget=forms.Textarea(attrs={
+        'class' : 'form-control', "row" : 5}))
+
+
+
+
+
+
+
+class UserLoginForm(AuthenticationForm):
+    username = forms.CharField(label='Имя пользователя', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+
 
 class UserRegisterForm(UserCreationForm):
     username = forms.CharField(label='Имя пользователя', help_text='Максимум 150 символов', widget=forms.TextInput(attrs={'class' : 'form-control'}))
@@ -18,33 +36,6 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
-
-
-
-
-
-
-# from .models import Category
-#
-# class NewsForm(forms.Form):
-#     title = forms.CharField(max_length=150,
-#                             label='Название',
-#                             widget=forms.TextInput(attrs={
-#                                 "class": "form-control"}))
-#     content = forms.CharField(label='Текст',
-#                               required=False,
-#                               widget=forms.Textarea(attrs={
-#                                 "class": "form-control",
-#                                 "rows": 5
-#                             }))
-#     is_published = forms.BooleanField(label='Статус',
-#                                       initial=True)
-#     category = forms.ModelChoiceField(empty_label='Выберите категорию',
-#                                       label='Категория',
-#                                       queryset=Category.objects.all(),
-#                                       widget=forms.Select(attrs={
-#
-#                                           "class": "form-control"}))
 
 
 class NewsForm(forms.ModelForm):
