@@ -16,7 +16,10 @@
     <div class="row">
 
         <div class="col-md-3">
+             {% load cache %}#}
+{#            {% cache 30 sidebar %}#}
             {% block sidebar %}SIDEBAR{% endblock %}
+{#            {% endcache %}#}
         </div>
               {% if messages %}
 

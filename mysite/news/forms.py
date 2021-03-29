@@ -4,12 +4,14 @@ import re
 from .models import News
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from captcha.fields import CaptchaField
 
 class ContactForm(forms.Form):
     subject = forms.CharField(label='Тема', widget=forms.TextInput(attrs={
         'class' : 'form-control'}))
     content = forms.CharField(label='Текст', widget=forms.Textarea(attrs={
         'class' : 'form-control', "row" : 5}))
+    captcha = CaptchaField()
 
 
 
